@@ -1,0 +1,130 @@
+-- 🌹 Quantapcode Hub 🌹
+local Players = game:GetService("Players")
+local lp = Players.LocalPlayer
+
+-- ScreenGui chính
+local gui = Instance.new("ScreenGui", lp:WaitForChild("PlayerGui"))
+gui.Name = "QuantapcodeHub"
+
+-- Main Frame
+local main = Instance.new("Frame", gui)
+main.Size = UDim2.new(0, 450, 0, 400)
+main.Position = UDim2.new(0.5, -225, 0.5, -200)
+main.BackgroundColor3 = Color3.fromRGB(25,25,25)
+main.Active = true
+main.Draggable = true
+Instance.new("UICorner", main).CornerRadius = UDim.new(0,15)
+
+-- Title
+local title = Instance.new("TextLabel", main)
+title.Size = UDim2.new(1,0,0,50)
+title.Text = "🌹 Quantapcode 🌹"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 22
+title.TextColor3 = Color3.fromRGB(255,255,255)
+title.BackgroundColor3 = Color3.fromRGB(50,50,50)
+title.BorderSizePixel = 0
+
+-- Content Frame
+local content = Instance.new("Frame", main)
+content.Size = UDim2.new(1,0,1,-50)
+content.Position = UDim2.new(0,0,0,50)
+content.BackgroundColor3 = Color3.fromRGB(45,45,45)
+
+-- Notify
+local function notify(msg)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "🌹 Quantapcode",
+        Text = msg,
+        Duration = 3
+    })
+end
+
+-- =================================
+-- Script 1: Mirida
+-- =================================
+local script1Running = false
+local script1Func
+
+local btnToggle1 = Instance.new("TextButton", content)
+btnToggle1.Size = UDim2.new(1,-20,0,50)
+btnToggle1.Position = UDim2.new(0,10,0,10)
+btnToggle1.Text = "🌹 Mirida"
+btnToggle1.Font = Enum.Font.GothamBold
+btnToggle1.TextSize = 18
+btnToggle1.TextColor3 = Color3.fromRGB(255,255,255)
+btnToggle1.BackgroundColor3 = Color3.fromRGB(80,80,80)
+Instance.new("UICorner", btnToggle1).CornerRadius = UDim.new(0,10)
+
+btnToggle1.MouseButton1Click:Connect(function()
+    if not script1Running then
+        local success, err = pcall(function()
+            script1Func = loadstring(game:HttpGet("https://pastefy.app/mTbfVy0H/raw"))
+            script1Func()
+        end)
+        if success then
+            script1Running = true
+            btnToggle1.Text = "❌ Tắt Script Mirida"
+            notify("✅ Script Mirida đã chạy")
+        else
+            notify("❌ Lỗi: "..tostring(err))
+        end
+    else
+        script1Running = false
+        btnToggle1.Text = "🌹 Mirida"
+        notify("⚠️ Script Mirida đã dừng toggle (có thể không tắt được hoàn toàn)")
+    end
+end)
+
+-- =================================
+-- Script 2: Lemon
+-- =================================
+local script2Running = false
+local script2Func
+
+local btnToggle2 = Instance.new("TextButton", content)
+btnToggle2.Size = UDim2.new(1,-20,0,50)
+btnToggle2.Position = UDim2.new(0,10,0,70)
+btnToggle2.Text = "🌹 Lemon"
+btnToggle2.Font = Enum.Font.GothamBold
+btnToggle2.TextSize = 18
+btnToggle2.TextColor3 = Color3.fromRGB(255,255,255)
+btnToggle2.BackgroundColor3 = Color3.fromRGB(80,80,80)
+Instance.new("UICorner", btnToggle2).CornerRadius = UDim.new(0,10)
+
+btnToggle2.MouseButton1Click:Connect(function()
+    if not script2Running then
+        local success, err = pcall(function()
+            script2Func = loadstring(game:HttpGet("https://pastefy.app/1FPEhJmq/raw"))
+            script2Func()
+        end)
+        if success then
+            script2Running = true
+            btnToggle2.Text = "❌ Tắt Script Lemon"
+            notify("✅ Script Lemon đã chạy")
+        else
+            notify("❌ Lỗi: "..tostring(err))
+        end
+    else
+        script2Running = false
+        btnToggle2.Text = "🌹 Lemon"
+        notify("⚠️ Script Lemon đã dừng toggle (có thể không tắt được hoàn toàn)")
+    end
+end)
+
+-- =================================
+-- Toggle Icon 🌹
+-- =================================
+local toggleBtn = Instance.new("TextButton", gui)
+toggleBtn.Size = UDim2.new(0,50,0,50)
+toggleBtn.Position = UDim2.new(0,10,0,10)
+toggleBtn.Text = "🌹"
+toggleBtn.Font = Enum.Font.GothamBold
+toggleBtn.TextSize = 28
+toggleBtn.TextColor3 = Color3.fromRGB(255,255,255)
+toggleBtn.BackgroundColor3 = Color3.fromRGB(50,50,50)
+Instance.new("UICorner", toggleBtn).CornerRadius = UDim.new(0,10)
+
+toggleBtn.MouseButton1Click:Connect(function()
+    main.Visible = not main.Visible
+end)
